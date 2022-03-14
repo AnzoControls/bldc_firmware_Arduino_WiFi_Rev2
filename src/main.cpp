@@ -11,6 +11,8 @@
 
 
 /**
+ * 
+ * 
  * All wifi related configurationsd
  * 
  * /
@@ -73,6 +75,9 @@ while (!Serial)
   ;
 }
 
+WiFiClient WiFiClient;
+PubSubClient PubSubClient(WiFiClient);
+
 if (WiFi.status()==WL_NO_MODULE){
   Serial.println("Communitcation with WiFi module is failed!!");
   while (true);
@@ -109,7 +114,7 @@ void loop()
   shields->setMotorMode(START_MOTOR);
   
   motorSpeed = motorSpeed + step;
-  if (motorSpeed == 0 || motorSpeed == 2000){
+  if (motorSpeed == 0 || motorSpeed == 600){
     step = -step;
   }
   delay(1000);
